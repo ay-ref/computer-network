@@ -1,5 +1,10 @@
 # computer-network
 
+## subnetting
+
+- why?
+  - initializing the network-id (constant part with all zeros)
+  - initializing the broadcast-ip (constant part with all ones)
 
 ## router
 
