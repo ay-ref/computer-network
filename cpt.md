@@ -73,12 +73,12 @@ show ip nat statistics
         exit
         ```
 
-  - dynamic no overload (no on port)
+  - dynamic (with port or without port)
 
     ```shell
-    ip nat pool <poolname> <ipstartrange> <ipendrange> prefix <subnetprefix> [overload]
+    ip nat pool <poolname> <ipstartrange> <ipendrange> prefix <subnetprefix> 
     access-list <listnumber> permit <networkip> <wildcard>
-    ip nat inside source list <listnumber> pool <poolname>
+    ip nat inside source list <listnumber> pool <poolname> [overload]
     ```
 
     - see access-lists
