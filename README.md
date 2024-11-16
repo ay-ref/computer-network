@@ -15,63 +15,8 @@
 - 172.16.0.0 – 172.31.255.255 (1,048,576 IP addresses)
 - 10.0.0.0 – 10.255.255.255 (16,777,216 IP addresses)
 
-## cisco packet tracer
+### subnetting
 
-### routing table
-
-- see the `routing table`
-
-```shell
-show ip route
-```
-
-- set `routing table`
-  - static addressing (against dhcp)
-
-    ```shell
-    ip address ipaddress subnetmask
-    ```
-
-### nat
-
-- see the `nat history`
-
-```shell
-show ip nat statistics
-```
-
-- set `routing table`
-
-```shell
-ip route destinationnetworkip subnetmaskip nextrouterportip
-```
-
-- set `nat table`
-
-  ```shell
-  enable
-  config t
-
-  ```
-  
-  - static
-
-    ```shell
-    ip nat inside source static <privateip> <newuniquepublicip>
-    ...
-    ```
-
-  - dynamic
-
-    ```shell
-    ip nat pool no-overload <ipstartrange> <ipendrange> prefix <subnetprefix>
-    ip nat inside source list <listnumber> pool no-overload
-    access-list <listnumber> permit <networkip> <wildcard>
-    ...
-    ```
-
-- see the `nat table`
-
-```shell
-show ip nat translations
-```
+- why?
+  - initializing the network-id (constant part with all zeros)
+  - initializing the broadcast-ip (constant part with all ones)
