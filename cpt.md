@@ -90,3 +90,17 @@ show ip nat statistics
     > pool is where new ips can be made. \
     > access-list is what private ip's can has access in this subnet. \
     > pool specified with name but list specified with number!
+
+### vlan
+
+```shell
+interface FastEthernet0/0.1
+```
+
+```shell
+encapsulation dot1q <vlannumber>
+```
+
+```shell
+ip address <subinfip> <netmask>
+```
