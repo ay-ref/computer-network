@@ -2,6 +2,8 @@
 
 ## principles
 
+### basics
+
 - protocol (in communication)
   - message format
   - message order ordered
@@ -38,6 +40,8 @@
 
 - internet
   - one case of networks of networks
+
+### delay
 
 - delay types
   - nodal processing delay (order: microsecond)
@@ -77,6 +81,13 @@
   - congestion point!
   - other system components should wait for it!
   - "a chain is no stronger than its weakest link"
+
+### architecture
+
+- layered architecture
+  - Layered Architecture is a design approach in computer science
+    where the application is divided into separate layers that can
+    be managed and maintained **independently** (scalable approach!!!).
 
 ## application layer
 
