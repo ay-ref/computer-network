@@ -49,7 +49,7 @@
   - queueing delay (trafic (congestion) delay) (order: microsecond-milisecond)
     - waiting to transmit delay
     - **without congestion we have no queueing delay**
-    - $d_que$
+    - $d_{que}$
   - transmission delay (order: milisecond)
     - node to link delay
     - $d_{trans} = \frac{L}{R}$
