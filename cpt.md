@@ -5,7 +5,43 @@
 - help: `?` is for help
   - ex: `show ip ?`
 
+## end system (host)
+
+### manual ip addressing
+
+- static addressing (against dhcp)
+
+```shell
+ipconfig ipaddress subnetmask [defaultgateway]
+```
+
+- see ip address
+
+```shell
+ipconfig
+```
+
+- check connection from source system
+
+```shell
+ping destinationip
+```
+
+## switch
+
+- switch(layer2) is a **plug-and-play** device and need no configuratoin!
+
 ## router
+
+- router is not a plug-and-play device and needs configuration!
+
+- 2 router can connect to each other with a serial link
+- if router has no serial port, we should add some module to make it capable
+- serial
+  - dce: needs clock rate configuration
+  - dte: does not need clock rate configuration
+- router ports are off in default and you should turn it on
+- each router port has its own mac address, ip address and subnet mask
 
 ### ip addressing
 

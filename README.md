@@ -95,6 +95,18 @@
 
 ### https
 
+### dhcp
+
+- dynamic host configuration protocol
+- used for automatic ip settings
+
+1. client dhcp sends dhcpdiscover request broadcast
+2. server responds dhcpoffer response including ip/subnet, default gateway, lease time, ...
+3. client sends dhcprequest for accepting dhcpoffer
+4. server responds dhcpack that finalize the settings
+
+> dora!
+
 ## transport layer
 
 ### udp
@@ -109,6 +121,10 @@
 
 ### icmp
 
+- internet control message protocol
+
+> ping command uses icmp protocol!
+
 ### rip
 
 ### ospf
@@ -116,6 +132,17 @@
 ### bgp
 
 ## data link layer
+
+### arp
+
+- address resolution protocol
+- used for creating ip-to-mac table in switch
+
+1. an arp request go to switch
+2. if switch has arp request key it returns
+3. else source sends a broadcast request to lan to find the ip address
+4. then destination after getting arp request sends arp response to source
+5. source find the mac address from arp response
 
 ## physical layer
 
@@ -125,10 +152,95 @@
 
 #### routing
 
+- routing
+  - static
+    - manual routing
+  - dynamic
+    - distance vector
+    - link state
+    - hybrid (ex: eigrp)
+
 - static routing
   - which network you want to go: **Network** (given in packet)
-  - is subnetting valid: **Subnet Mask**
+  - what is the subnetmask: **Subnet Mask**
   - which ip of next router i should send you: **Next Hop** (wanted/task)
+
+```shell
+ip route destinationnetworkip destinationnetworksubnetmask nexthop administrativedistance
+```
+
+- solving routing loops
+  - ttl (time to live)
+  - maximum hop count
+  - split horizon
+  - loop-free alternative path (lfa)
+
+- administrative distance (ad)
+  - a number with arbitary unit assigned to routes for priority in routing
+  - lowest ad has the highest priority
+
+- distance vector
+  - bellman-fold algorithm
+  - metric is hop count
+  - every router just compute next route (neighbours updating)
+  - implementation is rip and igrp
+  - not scalable
+
+- link state
+  - dijakstra's algorithm
+  - implementation is ospf
+  - scalable
+
+- rip
+  - v1 (just classful and broadcast) and v2 (also classless and multicast)
+  - use distance vector
+  - metric is hop count
+  - set max hop count for preventing loops
+  - not scalable
+
+  1. routing table creation
+  2. neighbour periodic update
+  3. update propagation
+
+  - timers
+    - update timer
+    - invalid (expiration) timer
+    - hold-down timer
+    - flush timer
+
+- igrp
+  - use distance vector
+  - combinations of metrics
+  - also manual metric is possible
+  - combinations of approach for preventing loops
+  - scalable
+
+- eigrp
+  - enhanced igrp
+  - use distance vector and link state together (hybrid algorithm)
+  - combination of metrics
+
+- rtp
+  - reliable transport protocol
+  - ensure no routing information is lost for route finding algorithm
+
+- dual
+  - diffusing update algorithm
+  - sharing node information to neighbours fast
+
+- ospf
+  - open shortest path first
+  - link state algorithm
+  
+  1. assign router id (rid)
+  2. link state advertisement (lsa)
+  3. centeral database stores all lsas (lsdb)
+  4. routing table creating in lsdb with dijstra algorithm
+
+  - routers and networks
+    - internal routers (ir) (same area routers)
+    - backbone routers (br) (routers in area 0)
+    - area border router (abr) (routers connect different areas)
 
 #### private networks range
 
@@ -138,7 +250,24 @@
 
 #### subnetting
 
-- why?
-
+- practice
   - initializing the network-id (constant part with all zeros)
   - initializing the broadcast-ip (constant part with all ones)
+  - manage ips
+  - easy control
+  - performance
+  - security
+
+- classful subnetting
+  - a (/8) (255.0.0.0)
+  - b (/16) (255.255.0.0)
+  - c (/24) (255.255.255.0)
+
+- (/8 or 255.0.0.0) are examples of subnet mask.
+  (32bit - subnet mask) determines how many ips (usually hosts) can be exists as valid.
+
+- for solving issues first you should find the subnet ip range (start(nid) to end(broadcast) interval).
+  then you can response any problems against subnetting.
+
+- cidr (agains classfull subnetting)
+  - classless inter-domain routing
