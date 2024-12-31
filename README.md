@@ -242,6 +242,35 @@ ip route destinationnetworkip destinationnetworksubnetmask nexthop administrativ
     - backbone routers (br) (routers in area 0)
     - area border router (abr) (routers connect different areas)
 
+- bgp
+  - border gateway protocol
+  - used for maximize scalability
+  - divide whole network in 2 parts
+    - igp (interior gateway protocol)
+    - egp (exterior gateway protocol)
+
+- as (asn)
+  - autonomous system number
+  - used in bgp
+  - same as are in same gateway (igp)
+
+- nat
+  - network address translation
+  - mapping one or some internal ip addresses to one or some external ip addresses
+  - used for
+    - sharing multiple private system to one ip
+    - more security (hiding ip)
+    - solving ipv4 ip count limitation
+  - types
+    - static nat (snat)
+      - one-to-one ip mapping
+    - dynamic nat (dnat)
+      - list-to-pool ip mapping (ip is not constant each time!)
+    - port address translation (pat)
+      - list-to-ip:port ip mapping (not overloading)
+
+##### vlan
+
 #### private networks range
 
 - 192.168.0.0 – 192.168.255.255 (65,536 IP addresses)
