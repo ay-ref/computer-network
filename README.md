@@ -83,6 +83,73 @@
   - other system components should wait for it!
   - "a chain is no stronger than its weakest link"
 
+- guarantees of transport layer
+  - reliable transfer
+  - throughput
+  - timing
+  - security
+
+- throughput (focus on volume)
+  - band-with sensetive (rate should be more that r)
+  - elastic (any rate is okay!)
+
+- timing (focus on time)
+  - real-time application constraints
+
+- messaging
+  - connection-oriented (tcp)
+  - connection-less (udp)
+
+- connection
+  - persistent (tcp persistent)
+  - non-persistent (tcp non persistent)
+
+- rtt
+  - round trip time
+  - time of packet to goes from client to server and back
+  - $rtt = d_{process} + d_{queue} + d_{propagation}$
+
+- proxy (ex: web cache)
+  - sits front of clients and response to them
+  - usually for caching
+
+- reverse proxy
+  - sits front of servers and redirect messages to correct server!
+  - usually for routing and load balancing
+
+- cache time calculation
+
+$$
+\text{HitRate} + \text{MissRate} = 1
+$$
+
+$$
+t = (\text{HitRate} \cdot \text{CacheProcessTime}) +
+(\text{MissRate} \cdot \text{CacheProcessTime + MainProcessTime})
+$$
+
+- conditional `GET`
+  - first check is anything new exists
+
+- http and ftp are on tcp
+
+- ftp
+  - control tcp connection
+  - data tcp connection
+
+- centeralized design problems
+  - single point of failure (spf)
+
+- dns server classes
+  - root
+  - tld (top-level-domain)
+  - authoritative
+  - local
+
+- query to servers types
+  - recursive (goes deep inside)
+  - iterative (goes one by one)
+
 ### architecture
 
 - layered architecture
